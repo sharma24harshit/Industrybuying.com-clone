@@ -13,6 +13,7 @@ import DemoSimiler from "../../DemoPagesBySachin/DemoSimiler";
 import { cartActions } from "../../redux/Cart/Cart.actions";
 import Navbar from "../../components/Navbar/Navbar";
 import { getUser, updateUser, userCartUpdate } from "../../redux/AddUser/User.actions";
+import { API_ENDPOINTS } from "../../config/api";
 
 const SinglePage = () => {
   const { id } = useParams();
@@ -31,7 +32,7 @@ const {cartData}=useSelector((store)=>store.cart)
 
   const getSimilarData =async () => {
     try {
-        const res = await fetch("https://lackadaisical-volcano-larch.glitch.me/data");
+        const res = await fetch(API_ENDPOINTS.PRODUCTS);
         const data = await res.json();
         setSimilarData(data);
     } catch (error) {
@@ -54,7 +55,7 @@ const {cartData}=useSelector((store)=>store.cart)
       duration: 3000,
       isClosable: true,
     });
-    return axios.post(`https://busy-peplum-fawn.cyclic.app/wishList`, itemDetail);
+    return axios.post(API_ENDPOINTS.WISHLIST, itemDetail);
   };
   
   const addToCart = async(itemDetail) => {

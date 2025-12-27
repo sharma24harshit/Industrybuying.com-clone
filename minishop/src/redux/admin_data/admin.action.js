@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getAllProductsApi, getAllUsersApi, getProductsApi } from "./admin.api";
+import { API_ENDPOINTS } from "../../config/api";
 import {GET_PROD_LOADING,
     GET_PROD_SUCCESS,
     GET_ALL_PROD_SUCCESS,
@@ -49,9 +50,10 @@ export const  getProductsAdmin = (page)=>async(dispatch)=>{
         dispatch({type:GET_PROD_FAIL})
     }
 } 
+
 export const getProdCatagoty = (val)=>async(dispatch)=>{
 try{
-    let res = await axios.get(`https://lackadaisical-volcano-larch.glitch.me/data?Categories=${val}`)
+    let res = await axios.get(`${API_ENDPOINTS.PRODUCTS}?Categories=${val}`)
     dispatch({type:GET_PROD_SUCCESS,payload:res.data})
 }catch(err){
     dispatch({type:GET_PROD_FAIL})

@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import { removeWishlistData, wishlistGetData } from '../../redux/Wishlist/Wishlist.actions';
+import { API_ENDPOINTS } from '../../config/api';
 
 import "./Wishlist.scss"
 
@@ -33,7 +34,7 @@ const Wishlist = () => {
       duration: 3000,
       isClosable: true,
     });
-    return axios.post(`https://lackadaisical-volcano-larch.glitch.me/cart`,{...itemDetail,qty:1});
+    return axios.post(API_ENDPOINTS.CART,{...itemDetail,qty:1});
   };
 
   const removeWishFun = (id) => {

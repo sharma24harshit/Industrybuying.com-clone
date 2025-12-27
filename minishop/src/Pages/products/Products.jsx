@@ -7,6 +7,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import { LeftSideFilter } from "./LeftSideFilter";
 import { SortFilters } from "./SortFilters";
 import { Button } from "@chakra-ui/react";
+import { API_ENDPOINTS } from "../../config/api";
 
 const Products = () => {
   const { Categories } = useParams();
@@ -19,7 +20,7 @@ const Products = () => {
   const getSimilarData = async () => {
     try {
       const res = await fetch(
-        `https://lackadaisical-volcano-larch.glitch.me/data/?q=${sort}&_sort=${price}&_order=${order}`
+        `${API_ENDPOINTS.PRODUCTS}/?q=${sort}&_sort=${price}&_order=${order}`
       );
       const datas = await res.json();
       console.log(datas);

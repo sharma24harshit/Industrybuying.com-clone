@@ -7,6 +7,8 @@ import { Box, Button, Flex, Heading, Text } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { getAllProducts, getProdCatagoty, getProductsAdmin } from "../../redux/admin_data/admin.action";
 import { useDispatch, useSelector } from "react-redux";
+import { API_ENDPOINTS } from "../../config/api";
+
 const AdminHome = () => {
   const dispatch = useDispatch()
   const [sloading, setsLoading] = useState(false);
@@ -52,10 +54,7 @@ const AdminHome = () => {
   const editData = async (id, data) => {
     try {
       setsLoading(true);
-      await axios.patch(
-        `https://lackadaisical-volcano-larch.glitch.me/data/${id}`,
-        data
-      );
+      await axios.patch(API_ENDPOINTS.PRODUCT_BY_ID(id), data);
       setsLoading(false);
     } catch (err) {
     }

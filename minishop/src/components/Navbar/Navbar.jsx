@@ -44,6 +44,7 @@ import {
 import {
   cartActions,
 } from "../../redux/Cart/Cart.actions";
+import { API_ENDPOINTS } from "../../config/api";
 
 
 export default function Navbar({ display = "flex" }) {
@@ -68,9 +69,7 @@ export default function Navbar({ display = "flex" }) {
 
   const getHomeData = async () => {
     try {
-      const res = await fetch(
-        "https://lackadaisical-volcano-larch.glitch.me/data"
-      );
+      const res = await fetch(API_ENDPOINTS.PRODUCTS);
       const HomeData = await res.json();
       setData(HomeData);
     } catch (error) {
