@@ -17,6 +17,7 @@ import DemoSimiler from "../../DemoPagesBySachin/DemoSimiler";
 
 import HomeCarouselDemo from './HomeCarouselDemo';
 import Navbar from "../../components/Navbar/Navbar";
+import { API_ENDPOINTS } from "../../config/api";
 
 
 function Home() {
@@ -26,7 +27,7 @@ function Home() {
   const getHomeData =async () => {
     setLoading(true);
     try {
-        const res = await fetch("https://lackadaisical-volcano-larch.glitch.me/data");
+        const res = await fetch(API_ENDPOINTS.PRODUCTS);
         const HomeData = await res.json();
         setData(HomeData);  
         setLoading(false);

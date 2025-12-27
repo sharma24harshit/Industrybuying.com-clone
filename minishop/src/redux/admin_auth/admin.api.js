@@ -1,9 +1,9 @@
 import axios from 'axios'
-
+import { API_ENDPOINTS } from "../../config/api"
 
 export const getAdmin = async (data)=>{
     try{
-        let res = await axios.post("https://potent-hot-uncle.glitch.me/api/auth/login",data)
+        let res = await axios.post(API_ENDPOINTS.ADMIN_LOGIN,data)
         return  res.data.access_token
     }catch(err){
         return err
